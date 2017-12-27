@@ -10,8 +10,12 @@
 	 	controllerAs: 'vm'
 	 })
 	 .when('/help', {
-	 	templateUrl: 'common/views/genericText.view.html',
+	 	templateUrl: 'help/help.view.html',
 	 	controller: 'helpCtrl',
+	 	controllerAs: 'vm'
+	 })
+	 .when('/config', {
+	 	templateUrl: 'help/config.view.html',
 	 	controllerAs: 'vm'
 	 })
 	 .when('/transport/:bus_id', {

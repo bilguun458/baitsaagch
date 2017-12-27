@@ -13,7 +13,7 @@ module.exports.transportsListRead = function(req, res) {
 		busModel
 		.find( {"cameDate" : null, $where: "this.toDirection == '" + req.params.dir + "'" } )
 		.sort({toDate: 1})
-		.select('busNumber fromDirection toDirection toDate cameDate')
+		.select('busNumber fromDirection toDirection toDate cameDate directions')
 		.exec(function(err, transport) {
 			if (!transport) {
 				sendJsonResponse(res, 404, {

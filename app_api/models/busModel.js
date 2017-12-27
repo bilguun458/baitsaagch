@@ -4,6 +4,10 @@ var driverSchema = new mongoose.Schema({
     name: String,
     phone: String
 });
+var dirSchema = new mongoose.Schema({
+    loc_name: String,
+    date: Date
+});
 
 var transportsSchema = new mongoose.Schema({
 	busNumber: String,
@@ -14,6 +18,7 @@ var transportsSchema = new mongoose.Schema({
 	toDate: Date,
 	cameDate: Date,
 	drivers: [driverSchema],
+	directions: [dirSchema],
 	distance: Number,
 	late: Boolean,
 	speed: Boolean,

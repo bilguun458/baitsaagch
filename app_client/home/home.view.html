@@ -1,25 +1,41 @@
 <navigation></navigation>
+<style>
+    .red-color{
+        color: red;
+    }
+</style>
 <div>
   <div class="row">
-    <div class="col-xs-12 col-sm-8" ng-controller="homeCtrl as hc">
+    <div class="col-xs-12 col-sm-12" ng-controller="homeCtrl as hc">
       <div class="error">{{ vm.message }}</div>
       <div class="row list-group">
         <div class="col-xs-12 list-group-item list-group-item-action flex-column align-items-start" ng-repeat="transport in vm.transports">
           <div class="d-flex w-100 justify-content-between">
             <h4>{{ transport.busNumber }}</h4>
-            <h6>{{ transport.toDate | date : 'yyyy-M-d h:m'}}</h6>
+            <h6><span style="font-size: 14px;">Ирэхээр тооцоолсон цаг: </span>{{ transport.toDate | date : 'yyyy-M-d h:m'}}</h6>
           </div>
           <div class="direction">
-            <span>from:</span>
-            <h6>{{ transport.fromDirection }}</h6>
-            <span>to:</span>
-            <h6>{{ transport.toDirection }}</h6>
+            <!--<h5>{{ transport.fromDirection }}</h6>
+              <div class="direction" ng-repeat="dir in transport.directions">
+                <h7 data-ng-class="{'red-color':dir.date == null}">&nbsp;&nbsp;&darr;{{ dir.loc_name }}&nbsp;{{ dir.date | date : 'yyyy-M-d h:m'}}</h7>
+                <br/>
+                <h7 data-ng-class="{'red-color':dir.date == null}">&nbsp;&nbsp;&darr;</h7>
+              </div>
+            <h5>{{ transport.toDirection }}</h6>-->
+            <pitch-canvas info="transport.directions"></pitch-canvas>
+            <div style="margin-top: -19px" class="d-flex w-100 justify-content-between">
+              <h6>{{ transport.fromDirection }}</h6>
+              <div ng-repeat="dir in transport.directions">
+                <h8>{{ dir.loc_name }}</h8>
+              </div>
+              <h6>{{ transport.toDirection }}</h6>
+            </div>
           </div>
           <p><a href="transport/{{ transport._id }}" role="button" class="btn btn-outline-success">Дэлгэрэнгүй &raquo;</a></p>
         </div>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-4">
+    <!--<div class="col-xs-12 col-sm-4">
       <div class="container">
         <div class="card">
           <div class="card-title">
@@ -30,7 +46,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
   </div>
   <footer-generic></footer-generic>
 </div>
